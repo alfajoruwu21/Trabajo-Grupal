@@ -65,6 +65,7 @@ public class Pet {
     @NotEmpty
 	private String species;
 	
+	private String Image;
 	///////////////////////////////
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
