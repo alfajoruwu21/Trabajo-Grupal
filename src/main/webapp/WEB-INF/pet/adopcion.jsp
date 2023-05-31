@@ -16,7 +16,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <form:form action="/adopcion" method="POST" modelAttribute="pet">
+                <form:form action="/adopcion" method="POST" modelAttribute="pet" enctype="multipart/form-data">
 
                     <div>
                         <form:label path="name">Nombre de la mascota</form:label>

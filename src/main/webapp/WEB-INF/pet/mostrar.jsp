@@ -11,6 +11,9 @@
 	<div class="container">
 		<div class="">
 			<h1>${mostrarPet. name}</h1>
+			<c:if test="${not empty mostrarPet.image}">
+            	<img src="/img/${mostrarPet.image}" class="img-fluid"/>
+            </c:if>
 		</div>
 		<div>
 			<p>Edad : ${mostrarPet.age}</p>
@@ -19,10 +22,6 @@
 			<p>Vacunas : ${mostrarPet.vaccine}</p>
 			<p>Género : ${mostrarPet.genre}</p>
 			<p>Especie : ${mostrarPet.species}</p>
-			<p></p>
-			<p></p>
-			<p></p>
-			<p></p>
 		</div>
 	</div>
 </body>
