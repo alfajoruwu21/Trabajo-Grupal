@@ -21,8 +21,7 @@
                     <div>
                         <form:label path="name">Nombre de la mascota</form:label>
                         <form:input path="name" class="form-control"/>
-                        <form:errors path="name" class="text-danger"/>
-                   		<form:errors path="*" class="text-danger"/>
+                        <form:errors path="name" class="text-danger"/>	
                     </div>
 
                     <div>
@@ -48,7 +47,10 @@
                         <form:input path="species" class="form-control"/>
                         <form:errors path="species" class="text-danger"/>
                     </div>
-
+					<div class="form-group">
+                        <label>Imagen</label>
+                        <input type="file" name="imagen" class="form-control" placeholder="imagen de 50x50 px"/>
+                    </div>
                     <div>
                         <form:label path="description">Descripcion</form:label>
                         <form:textarea path="description" class="form-control"/>
