@@ -20,45 +20,9 @@
   <body>
     <!-- Navbar section -->
     <div class="background">
-      <nav class="navbar navbar-expand-lg ">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <!-- Logo -->
-            <img src="img/icons/LogoPng.png" alt="logo-fundacion" id="img-logo">
-          </a>
-          <div class="nav-menu">
-            <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Especies
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Perro</a></li>
-                    <li><a class="dropdown-item" href="#">Gatos</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/adopcion">Dar en adopcion</a>
-                </li>
-                <li class="nav-item">
-                  <a class="btn btn-outline-success shadow-sm d-block" href="/donaciones">Donaciones</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+      <nav>
+        <jsp:include page="../includes/navbar.jsp"></jsp:include>
+      </nav>
 
         <section id="center">
           <article class="container-center">
@@ -139,39 +103,18 @@
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                       <div class="cards-wrapper">
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/cards/img-card-1.jpg"
-                            class="card-img-top" alt="...">
-                          <div class="card-body">
-                          	<c:forEach items="${pets}" var="pet">
-	                            <h5 class="card-title">${pet.name}</h5>
+                      <c:forEach items="${pets}" var="pet">
+	                        <div class="card" style="width: 18rem;">
+	                         	<c:if test="${not empty pet.image}">
+                                	<img src="/img/${pet.image}" class="img-fluid"/>
+                            	</c:if>
+	                          <div class="card-body">
+	                          	<h5 class="card-title">${pet.name}</h5>
 	                            <p class="card-text">${pet.description}</p>
 	                            <a href="/mostrar/${pet.id}" class="btn btn-primary">Más info</a>
-                            </c:forEach>
-                          </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/cards/img-card-2.jpg"
-                            class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to
-                              build on the card title and make up the bulk of
-                              the card's content.</p>
-                            <a href="#" class="btn btn-primary">Mï¿½s info</a>
-                          </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/cards/img-card-3.jpg"
-                            class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to
-                              build on the card title and make up the bulk of
-                              the card's content.</p>
-                            <a href="#" class="btn btn-primary">Más info</a>
-                          </div>
-                        </div>
+	                          </div>
+	                        </div>
+                        </c:forEach>
                       </div>
                     </div>
                     <div class="carousel-item">

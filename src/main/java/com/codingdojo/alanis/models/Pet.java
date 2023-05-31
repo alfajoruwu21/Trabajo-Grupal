@@ -14,6 +14,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -36,7 +37,7 @@ public class Pet {
 	
 	@Size(min=2, max =300) 
 	@NotEmpty
-	private String age;
+	private String age; //modelo tipo region
 	
 	@NotEmpty
 	@Size(min=2, max=300)
@@ -47,21 +48,19 @@ public class Pet {
 	
 	@Size(min=2, max= 55) 
 	private String owner;
-	
-	@Size(min=2, max= 100) 
     
-	private String image;//como llamar a la imagen?
+	private String image; //como llamar a la imagen?
 	///////////////////////////////
 	@Size(min=2, max= 200) 
 	private String vaccine;
 	
 	@Size(min=2, max= 200) 
     @NotEmpty
-	private String genre;
+	private String genre; //modelo tipo region
 	
 	@Size(min=2, max= 200) 
     @NotEmpty
-	private String species;
+	private String species; //modelo tipo region
 	
 	///////////////////////////////
 	@Column(updatable=false)
