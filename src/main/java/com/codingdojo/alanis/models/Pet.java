@@ -13,8 +13,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -44,7 +42,7 @@ public class Pet {
 	@Size(min=2, max=300)
 	private String city;
 	
-	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date adoptionDate;
 	
 	@Size(min=2, max= 55) 
@@ -65,7 +63,6 @@ public class Pet {
     @NotEmpty
 	private String species;
 	
-	private String Image;
 	///////////////////////////////
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")

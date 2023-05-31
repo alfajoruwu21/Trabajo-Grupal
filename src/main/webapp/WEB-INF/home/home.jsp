@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -70,7 +73,7 @@
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true"
                             aria-controls="collapseOne">
-                            Categor�a
+                            Categoría
                           </button>
                         </h2>
                         <div id="collapseOne"
@@ -91,7 +94,7 @@
                             type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            G�nero
+                            Género
                           </button>
                         </h2>
                         <div id="collapseTwo"
@@ -140,11 +143,11 @@
                           <img src="img/cards/img-card-1.jpg"
                             class="card-img-top" alt="...">
                           <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to
-                              build on the card title and make up the bulk of
-                              the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                          	<c:forEach items="${pets}" var="pet">
+	                            <h5 class="card-title">${pet.name}</h5>
+	                            <p class="card-text">${pet.description}</p>
+	                            <a href="/mostrar/${pet.id}" class="btn btn-primary">Más info</a>
+                            </c:forEach>
                           </div>
                         </div>
                         <div class="card" style="width: 18rem;">
@@ -155,7 +158,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Mï¿½s info</a>
                           </div>
                         </div>
                         <div class="card" style="width: 18rem;">
@@ -166,7 +169,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                       </div>
@@ -181,7 +184,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                         <div class="card" style="width: 18rem;">
@@ -192,7 +195,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                         <div class="card" style="width: 18rem;">
@@ -203,7 +206,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                       </div>
@@ -242,16 +245,16 @@
 
                 <div class="col-md-6">
                   <div class="text-about-us">
-                    <h4>�Qui�nes Somos?</h4>
+                    <h4>¿Quiénes Somos?</h4>
 
                     <p id="parrafo">
-                      Somos una fundaci�n comprometida con el rescate y adopci�n
-                      de caninos en situaci�n de
+                      Somos una fundación comprometida con el rescate y adopciï¿½n
+                      de caninos en situación de
                       vulnerabilidad. Nuestro equipo de voluntarios trabaja
                       incansablemente para brindarles cuidados y
-                      encontrarles hogares amorosos. Adem�s, promovemos la
-                      adopci�n responsable y la conciencia sobre el
-                      bienestar animal. �nete a nosotros para darles una segunda
+                      encontrarles hogares amorosos. Además, promovemos la
+                      adopción responsable y la conciencia sobre el
+                      bienestar animal. Únete a nosotros para darles una segunda
                       oportunidad a estos maravillosos seres.</p>
                   </div>
                 </div>

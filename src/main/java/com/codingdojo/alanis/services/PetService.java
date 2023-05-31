@@ -1,5 +1,6 @@
 package com.codingdojo.alanis.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,10 @@ public class PetService {
 	
 	public Pet guardarMascotas(Pet newPet) {
 		return petRepo.save(newPet);
+	}
+	
+	public List<Pet> mostrarMascota() {
+		return (List<Pet>) petRepo.findAll();
 	}
 	
 }
