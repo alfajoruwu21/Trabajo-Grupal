@@ -9,12 +9,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
@@ -38,34 +37,28 @@ public class Pet {
 	
 	@Size(min=2, max =300) 
 	@NotEmpty
-	private String age;
+	private String age; //modelo tipo region
 	
 	@NotEmpty
 	@Size(min=2, max=300)
 	private String city;
 	
-	
+	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date adoptionDate;
-	
-	@Size(min=2, max= 55) 
-	private String owner;
-	
-	@Size(min=2, max= 100) 
     
-	private String image;//como llamar a la imagen?
+	private String image; //como llamar a la imagen?
 	///////////////////////////////
 	@Size(min=2, max= 200) 
 	private String vaccine;
 	
 	@Size(min=2, max= 200) 
     @NotEmpty
-	private String genre;
+	private String genre; //modelo tipo region
 	
 	@Size(min=2, max= 200) 
     @NotEmpty
-	private String species;
+	private String species; //modelo tipo region
 	
-	private String Image;
 	///////////////////////////////
 	@Column(updatable=false)
 	@DateTimeFormat(pattern="yyyy-MM-dd")
@@ -78,6 +71,10 @@ public class Pet {
 	@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="publication_id")
     private Publication publication;
+	 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User owner;
 	
 	//////////////////////////////
 	public Pet() {
@@ -125,14 +122,6 @@ public class Pet {
 
 	public void setAdoptionDate(Date adoptionDate) {
 		this.adoptionDate = adoptionDate;
-	}
-
-	public String getOwner() {
-		return owner;
-	}
-
-	public void setOwner(String owner) {
-		this.owner = owner;
 	}
 
 	public String getImage() {
@@ -209,6 +198,14 @@ public class Pet {
 
 	public void setPublication(Publication publication) {
 		this.publication = publication;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 
