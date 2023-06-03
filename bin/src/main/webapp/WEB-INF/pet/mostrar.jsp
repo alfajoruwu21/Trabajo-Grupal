@@ -32,9 +32,7 @@
 		</div>
 		
 		
-		<c:if test="${userInSession.id eq mostrarPet.owner.id}">
-            <a href="/editar/${mostrarPet.id}" class="btn btn-primary">Editar</a>
-        </c:if>
+		
 		
 	</div>
 </body>

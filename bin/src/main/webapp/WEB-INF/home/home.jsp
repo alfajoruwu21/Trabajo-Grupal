@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,45 +20,9 @@
   <body>
     <!-- Navbar section -->
     <div class="background">
-      <nav class="navbar navbar-expand-lg ">
-        <div class="container">
-          <a class="navbar-brand" href="#">
-            <!-- Logo -->
-            <img src="img/icons/LogoPng.png" alt="logo-fundacion" id="img-logo">
-          </a>
-          <div class="nav-menu">
-            <button class="navbar-toggler" type="button"
-              data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-              aria-controls="navbarNavAltMarkup" aria-expanded="false"
-              aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-              <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#">Home</a>
-                </li>
-                <li class="nav-item dropdown">
-                  <a class="nav-link dropdown-toggle" href="#" role="button"
-                    data-bs-toggle="dropdown"
-                    aria-expanded="false">
-                    Especies
-                  </a>
-                  <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Perro</a></li>
-                    <li><a class="dropdown-item" href="#">Gatos</a></li>
-                  </ul>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="/adopcion">Dar en adopcion</a>
-                </li>
-                <li class="nav-item">
-                  <a class="btn btn-outline-success shadow-sm d-block" href="/donaciones">Donaciones</a>
-                </li>
-              </ul>
-            </div>
-          </div>
-        </nav>
+      <nav>
+        <jsp:include page="../includes/navbar.jsp"></jsp:include>
+      </nav>
 
         <section id="center">
           <article class="container-center">
@@ -70,7 +37,7 @@
                             data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true"
                             aria-controls="collapseOne">
-                            Categor�a
+                            Categoría
                           </button>
                         </h2>
                         <div id="collapseOne"
@@ -79,8 +46,10 @@
                           data-bs-parent="#accordionExample">
                           <div class="accordion-body">
                             <nav class="nav nav-pills flex-column">
-                              <a class="nav-link ms-3 my-1" href="#item-1-1">Perro</a>
-                              <a class="nav-link ms-3 my-1" href="#item-1-2">Gato</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/perros">Perros</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/gatos">Gatos</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/roedores">Roedores</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/otros">Otras especies</a>
                             </nav>
                           </div>
                         </div>
@@ -91,7 +60,7 @@
                             type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false"
                             aria-controls="collapseTwo">
-                            G�nero
+                            Género
                           </button>
                         </h2>
                         <div id="collapseTwo"
@@ -99,8 +68,8 @@
                           aria-labelledby="headingTwo"
                           data-bs-parent="#accordionExample">
                           <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ms-3 my-1" href="#item-1-1">Hembra</a>
-                            <a class="nav-link ms-3 my-1" href="#item-1-2">Macho</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/generos/hembras">Hembra</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/generos/machos">Macho</a>
                           </nav>
                         </div>
                       </div>
@@ -118,9 +87,9 @@
                           aria-labelledby="headingThree"
                           data-bs-parent="#accordionExample">
                           <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ms-3 my-1" href="#item-1-1">Cachorro</a>
-                            <a class="nav-link ms-3 my-1" href="#item-1-2">Adulto</a>
-                            <a class="nav-link ms-3 my-1" href="#item-1-3">Senior</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/edades/cachorros">Cachorro</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/edades/adultos">Adulto</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/edades/seniors">Senior</a>
                           </nav>
                         </div>
                       </div>
@@ -136,39 +105,20 @@
                   <div class="carousel-inner">
                     <div class="carousel-item active">
                       <div class="cards-wrapper">
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/cards/img-card-1.jpg"
-                            class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to
-                              build on the card title and make up the bulk of
-                              the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
-                          </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/cards/img-card-2.jpg"
-                            class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to
-                              build on the card title and make up the bulk of
-                              the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
-                          </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                          <img src="img/cards/img-card-3.jpg"
-                            class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">Some quick example text to
-                              build on the card title and make up the bulk of
-                              the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
-                          </div>
-                        </div>
+                      <c:forEach items="${pets}" var="pet">
+	                        <div class="card" style="width: 18rem;">
+	                         	<c:if test="${not empty pet.image}">
+                                	<img src="/img/${pet.image}" class="img-fluid"/>
+                            	</c:if>
+	                          <div class="card-body">
+	                          	<h3 class="card-title">${pet.name}</h3>
+	                            <p class="card-text">Género: ${pet.genre}</p>
+	                            <p class="card-text">Edad: ${pet.age}</p>
+	                            <p class="card-text">Ciudad: ${pet.city}</p>
+	                            <a href="/mostrar/${pet.id}" class="btn btn-primary">Más info</a>
+	                          </div>
+	                        </div>
+                        </c:forEach>
                       </div>
                     </div>
                     <div class="carousel-item">
@@ -181,7 +131,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                         <div class="card" style="width: 18rem;">
@@ -192,7 +142,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                         <div class="card" style="width: 18rem;">
@@ -203,7 +153,7 @@
                             <p class="card-text">Some quick example text to
                               build on the card title and make up the bulk of
                               the card's content.</p>
-                            <a href="#" class="btn btn-primary">M�s info</a>
+                            <a href="#" class="btn btn-primary">Más info</a>
                           </div>
                         </div>
                       </div>
@@ -230,28 +180,28 @@
               <div class="row">
                 <div class="col-md-2">
                   <div class="text-adds">
-                    <img src="img/add.png" alt="anuncio" id="adds">
+                    <img src="images/home/add.png" alt="anuncio" id="adds">
                   </div>
                 </div>
                 <div class="col-md-4">
                   <div class="img-volunteers">
-                    <img src="img/volunteers.jfif" alt="voluntarios"
+                    <img src="images/home/volunteers.jfif" alt="voluntarios"
                       id="volunteers">
                   </div>
                 </div>
 
                 <div class="col-md-6">
                   <div class="text-about-us">
-                    <h4>�Qui�nes Somos?</h4>
+                    <h4>¿Quiénes Somos?</h4>
 
                     <p id="parrafo">
-                      Somos una fundaci�n comprometida con el rescate y adopci�n
-                      de caninos en situaci�n de
+                      Somos una fundación comprometida con el rescate y adopción
+                      de caninos en situación de
                       vulnerabilidad. Nuestro equipo de voluntarios trabaja
                       incansablemente para brindarles cuidados y
-                      encontrarles hogares amorosos. Adem�s, promovemos la
-                      adopci�n responsable y la conciencia sobre el
-                      bienestar animal. �nete a nosotros para darles una segunda
+                      encontrarles hogares amorosos. Además, promovemos la
+                      adopción responsable y la conciencia sobre el
+                      bienestar animal. Únete a nosotros para darles una segunda
                       oportunidad a estos maravillosos seres.</p>
                   </div>
                 </div>
@@ -262,13 +212,13 @@
             <h6>Nuestros socios </h6>
             <div class="container-deep">
 
-              <img src="img/sponsor/Logo-Dog-Chow.png" alt="logo"
+              <img src="images/sponsor/logo_fit_formula.png" alt="logo"
                 class="img-sponsor">
-              <img src="img/sponsor/logo_fit_formula.png" alt="logo"
+              <img src="images/sponsor/logo_masterdog.png" alt="logo"
                 class="img-sponsor">
-              <img src="img/sponsor/logo_masterdog.png" alt="logo"
+              <img src="images/sponsor/logo_royalcanin.png" alt="logo"
                 class="img-sponsor">
-              <img src="img/sponsor/logo-championdog.png" alt="logo"
+              <img src="images/sponsor/Logo-Dog-Chow.png" alt="logo"
                 class="img-sponsor">
 
             </div>
@@ -276,13 +226,13 @@
           </article>
 
         </section>
-        <footer>
-
-        </footer>
         <script
           src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
           crossorigin="anonymous"></script>
       </div>
+      <footer>
+		 <jsp:include page="../includes/footer.jsp"></jsp:include>
+    </footer>
     </body>
   </html>

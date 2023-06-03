@@ -270,6 +270,10 @@ public class HomeController {
 	public String editPet(@PathVariable("id") Long id,
 						 Model model) {
 		
+		model.addAttribute("generos", Genre.generos);
+		model.addAttribute("especies", Species.especies);
+		model.addAttribute("edades", Age.edades);
+		
 		Pet editPet = petService.findPet(id);
 		model.addAttribute("pet", editPet);
 		return "/pet/editar.jsp";
@@ -278,8 +282,12 @@ public class HomeController {
 	@PutMapping("/editar/{id}")
 	public String updatePet(@Valid
 							@ModelAttribute("pet") Pet pet,
-							BindingResult result) {
+							BindingResult result, Model model ) {
+		
 		if(result.hasErrors()) {
+			model.addAttribute("generos", Genre.generos);
+			model.addAttribute("especies", Species.especies);
+			model.addAttribute("edades", Age.edades);
 			return "/pet/editar.jsp";
 		}else {
 			petService.guardarPet(pet);

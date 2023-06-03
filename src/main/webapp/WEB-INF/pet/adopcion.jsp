@@ -17,28 +17,28 @@
 
                     <div class="form-group">
                         <label for="name">Nombre de la mascota</label>
-                        <input type="text" name="name" class="form-control" id="name">
+                        <input type="text" name="name" class="form-control" id="name" value="${mascota.name}">
                     </div>
 
-                      <div class="form-group">
+                    <div class="form-group">
                         <label for="age">Edad</label>
                         <select name="age" class="form-control">
                             <c:forEach items="${edades}" var="a">
-                                <option value="${a}">${a}</option>
+                                <option value="${a}" <c:if test="${a eq mascota.age}">selected</c:if>>${a}</option>
                             </c:forEach>
                         </select>
                     </div>
 
                     <div class="form-group">
                         <label for="city">Ciudad</label>
-                        <input type="text" name="city" class="form-control" id="city">
+                        <input type="text" name="city" class="form-control" id="city" value="${mascota.city}">
                     </div>
 
                     <div class="form-group">
                         <label for="genre">Género</label>
                         <select name="genre" class="form-control">
                             <c:forEach items="${generos}" var="g">
-                                <option value="${g}">${g}</option>
+                                <option value="${g}" <c:if test="${g eq mascota.genre}">selected</c:if>>${g}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -47,7 +47,7 @@
                         <label for="species">Especie</label>
                         <select name="species" class="form-control">
                             <c:forEach items="${especies}" var="es">
-                                <option value="${es}">${es}</option>
+                                <option value="${es}" <c:if test="${es eq mascota.species}">selected</c:if>>${es}</option>
                             </c:forEach>
                         </select>
                     </div>
@@ -59,12 +59,12 @@
 
                     <div class="form-group">
                         <label for="description">Descripción</label>
-                        <textarea name="description" class="form-control" id="description"></textarea>
+                        <textarea name="description" class="form-control" id="description">${mascota.description}</textarea>
                     </div>
 
                     <input type="hidden" name="owner" value="${userInSession.id}">
 
-                    <input type="submit" value="Adopción" class="btn btn-success">
+                    <input type="submit" value="Actualizar" class="btn btn-success">
                 </form>
 
             </div>

@@ -8,12 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
+
+    <h1>Edicion de adopción</h1>
     <div class="container">
         <div class="row">
             <div class="col-6">
                 <form action="/adopcion" method="POST" enctype="multipart/form-data">
-					<h1>Editar Mascota</h1>
-						<input type="hidden" name="_method" value="PUT">
 
                     <div class="form-group">
                         <label for="name">Nombre de la mascota</label>
