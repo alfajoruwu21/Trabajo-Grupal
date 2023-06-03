@@ -30,6 +30,10 @@
 			<p>Género : ${mostrarPet.genre}</p>
 			<p>Especie : ${mostrarPet.species}</p>
 		</div>
+		
+		
+		
+		
 	</div>
 </body>
 </html>

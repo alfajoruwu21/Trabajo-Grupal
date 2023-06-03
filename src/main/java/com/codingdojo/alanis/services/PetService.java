@@ -3,6 +3,8 @@ package com.codingdojo.alanis.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -82,5 +84,19 @@ public class PetService {
 
 
 
+		/////////////////////////////eliminar///////////////////////////////////////////////////////
+		
+		public void deletePet(Long id) {
+			petRepo.deleteById(id);
+		}
+		
+		/////////////////////editar////////////////////////////////////////////////////////
+		public Pet findPet(Long id) {
+			return petRepo.findById(id).orElse(null);
+		}
+		
+		public Pet guardarPet(Pet nuevoPet) {
+			return petRepo.save(nuevoPet);
+		}
 }
 

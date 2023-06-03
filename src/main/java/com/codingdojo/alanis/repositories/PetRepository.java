@@ -54,4 +54,8 @@ public interface PetRepository extends CrudRepository<Pet, Long>{
 	@Query(value = "SELECT * FROM pets WHERE age = 'senior'", nativeQuery = true)
     List<Pet> getSeniors();
 	
+	
+	void deleteById(Long id);
+	
+	Pet save(Pet nuevoPet);
 }
