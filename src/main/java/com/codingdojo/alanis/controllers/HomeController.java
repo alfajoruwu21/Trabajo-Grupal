@@ -18,7 +18,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.codingdojo.alanis.models.Age;
+import com.codingdojo.alanis.models.Genre;
 import com.codingdojo.alanis.models.Pet;
+import com.codingdojo.alanis.models.Species;
 import com.codingdojo.alanis.models.User;
 import com.codingdojo.alanis.services.PetService;
 
@@ -47,7 +50,6 @@ public class HomeController {
 		}
 		/*=======Revisa que mi usuario haya iniciado sesion=======*/
 		
-		
 		model.addAttribute("pets", petService.carrusel());
 		
 		System.out.println(petService.carrusel());
@@ -57,10 +59,15 @@ public class HomeController {
 	
 	@GetMapping("/adopcion")
 	public String adopcion(@ModelAttribute("pet") Pet pet,
-						   HttpSession session) {
+						   HttpSession session, Model model) {
+		
+		model.addAttribute("generos", Genre.generos);
+		model.addAttribute("especies", Species.especies);
+		model.addAttribute("edades", Age.edades);
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
 		User userInMethod = (User)session.getAttribute("userInSession");
+		
 		
 		if(userInMethod == null) { //para que no puedan entrar directamente con el url
 			return "redirect:/";
@@ -74,7 +81,12 @@ public class HomeController {
 	public String adopcion(@Valid @ModelAttribute("pet") Pet pet, 
 						   BindingResult result,
 						   MultipartFile imagen,
-						   HttpSession session) {
+						   HttpSession session, Model model) {
+		
+		model.addAttribute("generos", Genre.generos);
+		model.addAttribute("especies", Species.especies);
+		model.addAttribute("edades", Age.edades);
+		
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
 		User userInMethod = (User)session.getAttribute("userInSession");
@@ -86,6 +98,9 @@ public class HomeController {
 		
 		if(result.hasErrors()) {
 			System.out.println("hola");
+			model.addAttribute("generos", Genre.generos);
+			model.addAttribute("especies", Species.especies);
+			model.addAttribute("edades", Age.edades);
 			return "pet/adopcion.jsp";
 			
 		}else {
@@ -168,4 +183,75 @@ public class HomeController {
 		return "";
 	}
 	
+	@GetMapping("/categoria/especies/{specie}")
+	public String mostrarMascotasPorSpecie(@PathVariable("specie") String specie, HttpSession session, Model model) {
+
+	    /* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
+	    
+	    if (specie.equalsIgnoreCase("perros")) {
+	        model.addAttribute("mascotas", petService.getPerros());
+	    } else if (specie.equalsIgnoreCase("gatos")) {
+	        model.addAttribute("mascotas", petService.getGatos());
+	    } else if (specie.equalsIgnoreCase("roedores")) {
+	        model.addAttribute("mascotas", petService.getRoedores());
+	    } else {
+	        model.addAttribute("mascotas", petService.getOtros());
+	    }
+
+	    
+	    model.addAttribute("especie", specie);
+	    return "/categoria/species.jsp";
+	}
+
+	@GetMapping("/categoria/generos/{genre}")
+	public String mostrarMascotasPorGenero(@PathVariable("genre") String genre, HttpSession session, Model model) {
+
+	    /* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
+	    
+	    if (genre.equalsIgnoreCase("machos")) {
+	        model.addAttribute("mascotas", petService.getMachos());
+	    } else if (genre.equalsIgnoreCase("hembras")) {
+	        model.addAttribute("mascotas", petService.getHembras());
+	    } 
+	    
+	    model.addAttribute("genero", genre);
+	    return "/categoria/genre.jsp";
+	}
+	
+	@GetMapping("/categoria/edades/{age}")
+	public String mostrarMascotasPorEdad(@PathVariable("age") String age, HttpSession session, Model model) {
+
+	    /* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
+	    if (age.equalsIgnoreCase("cachorros")) {
+	        model.addAttribute("mascotas", petService.getCachorros());
+	    } else if (age.equalsIgnoreCase("adultos")) {
+	        model.addAttribute("mascotas", petService.getAdultos());
+	    } else if (age.equalsIgnoreCase("seniors")) {
+	        model.addAttribute("mascotas", petService.getSeniors());
+	    } 
+	    
+	    model.addAttribute("edad", age);
+	    return "/categoria/age.jsp";
+	}
 }

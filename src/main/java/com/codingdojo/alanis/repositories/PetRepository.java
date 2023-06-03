@@ -22,4 +22,36 @@ public interface PetRepository extends CrudRepository<Pet, Long>{
 	@Query(value="SELECT * FROM pets LIMIT 8;" , nativeQuery = true)
 	List<Pet> carrusel();
 	
+	
+	@Query(value = "SELECT * FROM pets WHERE species = 'perro'", nativeQuery = true)
+    List<Pet> getPerros();
+	
+	@Query(value = "SELECT * FROM pets WHERE species = 'gato'", nativeQuery = true)
+    List<Pet> getGatos();
+	
+	@Query(value = "SELECT * FROM pets WHERE species = 'roedor'", nativeQuery = true)
+    List<Pet> getRoedores();
+	
+	@Query(value = "SELECT * FROM pets WHERE species = 'otro'", nativeQuery = true)
+    List<Pet> getOtros ();
+	
+
+	
+	@Query(value = "SELECT * FROM pets WHERE genre = 'macho'", nativeQuery = true)
+    List<Pet> getMachos();
+	
+	@Query(value = "SELECT * FROM pets WHERE genre = 'hembra'", nativeQuery = true)
+    List<Pet> getHembras();
+	
+	
+	
+	@Query(value = "SELECT * FROM pets WHERE age = 'cachorro'", nativeQuery = true)
+    List<Pet> getCachorros();
+	
+	@Query(value = "SELECT * FROM pets WHERE age = 'adulto'", nativeQuery = true)
+    List<Pet> getAdultos();
+	
+	@Query(value = "SELECT * FROM pets WHERE age = 'senior'", nativeQuery = true)
+    List<Pet> getSeniors();
+	
 }

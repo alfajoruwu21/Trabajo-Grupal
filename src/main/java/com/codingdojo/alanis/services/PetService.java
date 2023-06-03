@@ -38,4 +38,49 @@ public class PetService {
 		return petRepo.carrusel();
 	}
 	
+///////////////////////////// FILTRADO POR ESPECIE //////////////////////////
+	
+		public List<Pet> getPerros() {
+			return petRepo.getPerros();
+		}
+		
+		public List<Pet> getGatos() {
+			return petRepo.getGatos();
+		}
+		
+		public List<Pet> getRoedores() {
+			return petRepo.getRoedores();
+		}
+		
+		public List<Pet> getOtros() {
+			return petRepo.getOtros();
+		}
+		
+		
+		///////////////////////////// FILTRADO POR GENERO //////////////////////////////////////
+		public List<Pet> getMachos() {
+			return petRepo.getMachos();
+		}
+		
+		public List<Pet> getHembras() {
+			return petRepo.getHembras();
+		}
+		
+		/////////////////////////////// FILTRADO POR LA EDAD ///////////////////////////////
+		
+		public List<Pet> getCachorros() {
+			return petRepo.getCachorros();
+		}
+		
+		public List<Pet> getAdultos() {
+			return petRepo.getAdultos();
+		}
+		
+		public List<Pet> getSeniors() {
+			return petRepo.getSeniors();
+		}
+
+
+
 }
+
