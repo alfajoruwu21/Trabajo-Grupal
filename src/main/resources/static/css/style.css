@@ -370,3 +370,90 @@ h6 {
   margin-top: 100px;
   margin-bottom: 200px;
 }
+
+/* LOGIN*/
+body{
+background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1500' height='2000' preserveAspectRatio='none' viewBox='0 0 1500 2000'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1053%26quot%3b)' fill='none'%3e%3crect width='1500' height='2000' x='0' y='0' fill='rgba(208%2c 255%2c 228%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c744.888C160.577%2c777.327%2c343.093%2c836.869%2c481.489%2c749.211C619.881%2c661.556%2c616.204%2c461.499%2c683.339%2c312.071C749.954%2c163.8%2c912.927%2c32.215%2c874.589%2c-125.747C835.735%2c-285.835%2c601.893%2c-303.995%2c502.023%2c-435.005C391.295%2c-580.259%2c440.712%2c-854.488%2c269.855%2c-919.042C103.39%2c-981.937%2c-39.168%2c-763.701%2c-206.312%2c-702.633C-358.596%2c-646.994%2c-543.739%2c-683.568%2c-666.021%2c-577.111C-793.258%2c-466.341%2c-834.881%2c-290.107%2c-869.753%2c-125.052C-906.558%2c49.152%2c-975.235%2c253.137%2c-872.097%2c398.273C-767.215%2c545.863%2c-539.091%2c510.154%2c-370.833%2c577.028C-242.135%2c628.179%2c-135.748%2c717.465%2c0%2c744.888' fill='%23b9ffd7'%3e%3c/path%3e%3cpath d='M1500 2786.132C1641.333 2755.3940000000002 1733.204 2630.2690000000002 1852.363 2548.2870000000003 1966.868 2469.507 2126.935 2439.087 2186.766 2313.636 2246.716 2187.935 2175.102 2043.58 2159.05 1905.243 2142.469 1762.346 2168.382 1609.176 2090.956 1487.933 2009.019 1359.626 1870.008 1279.3400000000001 1726.642 1228.129 1577.575 1174.8809999999999 1411.767 1138.63 1262.78 1192.103 1116.519 1244.597 1034.638 1391.238 936.494 1511.719 841.416 1628.437 723.939 1736.383 698.54 1884.767 672.88 2034.675 741.855 2179.245 798.038 2320.575 856.99 2468.87 900.143 2638.253 1033.135 2726.456 1166.584 2814.962 1343.527 2820.1620000000003 1500 2786.132' fill='%23e7fff1'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1053'%3e%3crect width='1500' height='2000' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+}
+
+.login-box {
+  width: 320px;
+  height: 420px;
+  background: #619483ad;
+  color: #fff;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  box-sizing: border-box;
+  padding: 70px 30px;
+}
+
+.login-box .avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  position: absolute;
+  top: -50px;
+  left: calc(50% - 50px);
+}
+.login-box h2 {
+    text-align:center;
+    color:#d0ffe4;
+}
+.login-box h1 {
+
+  margin: 0;
+  padding: 0 0 20px;
+  text-align: center;
+  font-size: 22px;
+}
+
+.login-box label {
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  display: block;
+}
+
+.login-box input {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.login-box input[type="text"], .login-box input[type="password"] {
+  border: none;
+  border-bottom: 1px solid #fff;
+  background: transparent;
+  outline: none;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+}
+
+.login-box input[type="submit"] {
+  border: none;
+  outline: none;
+  height: 40px;
+  background: #dfbe41;
+  color: #fff;
+  font-size: 18px;
+  border-radius: 20px;
+}
+
+.login-box input[type="submit"]:hover {
+  cursor: pointer;
+  background: #ffc107;
+  color: #000;
+}
+
+.login-box a {
+  text-decoration: none;
+  font-size: 12px;
+  line-height: 20px;
+  color: darkgrey;
+}
+
+.login-box a:hover {
+  color: #fff;
+}

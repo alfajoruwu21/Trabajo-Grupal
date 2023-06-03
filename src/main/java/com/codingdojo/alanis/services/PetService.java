@@ -33,4 +33,9 @@ public class PetService {
 		return (List<Pet>) petRepo.findAll();
 	}
 	
+	//Listado de primeras 8 mascotas
+	public List<Pet> carrusel() {
+		return petRepo.carrusel();
+	}
+	
 }

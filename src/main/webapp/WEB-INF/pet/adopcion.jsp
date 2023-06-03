@@ -56,6 +56,9 @@
                         <form:textarea path="description" class="form-control"/>
                         <form:errors path="description" class="text-danger"/>
                     </div>
+                    
+                    <form:hidden path="owner" value="${userInSession.id}" />
+                    
                     <input type="submit" value="Adopcion" class="btn btn-success">
                     </form:form>
 

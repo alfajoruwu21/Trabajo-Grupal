@@ -142,6 +142,30 @@ public class Publication {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+
+	public Date getPublication() {
+		return publication;
+	}
+
+	public void setPublication(Date publication) {
+		this.publication = publication;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Pet getPet() {
+		return pet;
+	}
+
+	public void setPet(Pet pet) {
+		this.pet = pet;
+	}
 	
 	
 }

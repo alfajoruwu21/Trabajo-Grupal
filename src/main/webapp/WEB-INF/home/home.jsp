@@ -110,9 +110,9 @@
                             	</c:if>
 	                          <div class="card-body">
 	                          	<h3 class="card-title">${pet.name}</h3>
-	                            <h5 class="card-text">${pet.genre}</h5>
-	                            <h5 class="card-text">${pet.age}</h5>
-	                            <h5 class="card-text">${pet.city}</h5>
+	                            <p class="card-text">Género: ${pet.genre}</p>
+	                            <p class="card-text">Edad: ${pet.age}</p>
+	                            <p class="card-text">Ciudad: ${pet.city}</p>
 	                            <a href="/mostrar/${pet.id}" class="btn btn-primary">Más info</a>
 	                          </div>
 	                        </div>
@@ -193,7 +193,7 @@
                     <h4>¿Quiénes Somos?</h4>
 
                     <p id="parrafo">
-                      Somos una fundación comprometida con el rescate y adopciï¿½n
+                      Somos una fundación comprometida con el rescate y adopción
                       de caninos en situación de
                       vulnerabilidad. Nuestro equipo de voluntarios trabaja
                       incansablemente para brindarles cuidados y

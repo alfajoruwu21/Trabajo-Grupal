@@ -5,6 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.codingdojo.alanis.models.Pet;
+import com.codingdojo.alanis.models.User;
 import com.codingdojo.alanis.services.PetService;
 
 
@@ -34,22 +36,53 @@ public class HomeController {
 	}
 	
 	@GetMapping("/home")
-	public String home(Model model) {
+	public String home(Model model,
+					   HttpSession session) {
 		
-		model.addAttribute("pets", petService.mostrarMascota());
+		/*Revisa que mi usuario haya iniciado sesion*/
+		User userInMethod = (User)session.getAttribute("userInSession");
+		
+		if(userInMethod == null) { //para que no puedan entrar directamente con el url
+			return "redirect:/";
+		}
+		/*=======Revisa que mi usuario haya iniciado sesion=======*/
+		
+		
+		model.addAttribute("pets", petService.carrusel());
+		
+		System.out.println(petService.carrusel());
 		
 		return "home/home.jsp";
 	}
 	
 	@GetMapping("/adopcion")
-	public String adopcion(@ModelAttribute("pet") Pet pet) {
+	public String adopcion(@ModelAttribute("pet") Pet pet,
+						   HttpSession session) {
+		
+		/*Revisa que mi usuario haya iniciado sesion*/
+		User userInMethod = (User)session.getAttribute("userInSession");
+		
+		if(userInMethod == null) { //para que no puedan entrar directamente con el url
+			return "redirect:/";
+		}
+		/*=======Revisa que mi usuario haya iniciado sesion=======*/
+		
 		return "pet/adopcion.jsp";
 	}
 	
 	@PostMapping("/adopcion")//formulario de creacion de mascotas
 	public String adopcion(@Valid @ModelAttribute("pet") Pet pet, 
 						   BindingResult result,
-						   MultipartFile imagen) {
+						   MultipartFile imagen,
+						   HttpSession session) {
+		
+		/*Revisa que mi usuario haya iniciado sesion*/
+		User userInMethod = (User)session.getAttribute("userInSession");
+		
+		if(userInMethod == null) { //para que no puedan entrar directamente con el url
+			return "redirect:/";
+		}
+		/*=======Revisa que mi usuario haya iniciado sesion=======*/
 		
 		if(result.hasErrors()) {
 			System.out.println("hola");
@@ -80,7 +113,16 @@ public class HomeController {
 	
 	@GetMapping("/mostrar/{petId}")
 	public String mostrarMascota(@PathVariable("petId")Long petId,
-								 Model model) {
+								 Model model,
+								 HttpSession session) {
+		
+		/*Revisa que mi usuario haya iniciado sesion*/
+		User userInMethod = (User)session.getAttribute("userInSession");
+		
+		if(userInMethod == null) { //para que no puedan entrar directamente con el url
+			return "redirect:/";
+		}
+		/*=======Revisa que mi usuario haya iniciado sesion=======*/
 		
 		Pet mostrarPet = petService.buscarMascotasPorId(petId);
 		model.addAttribute("mostrarPet", mostrarPet);
@@ -90,7 +132,40 @@ public class HomeController {
 	}
 	
 	@GetMapping("/donaciones")
-	public String donaciones() {
-		return "pet/donaciones.jsp";
+	public String donaciones(HttpSession session) {
+		
+		/*Revisa que mi usuario haya iniciado sesion*/
+		User userInMethod = (User)session.getAttribute("userInSession");
+		
+		if(userInMethod == null) { //para que no puedan entrar directamente con el url
+			return "redirect:/";
+		}
+		/*=======Revisa que mi usuario haya iniciado sesion=======*/
+		
+		return "/pet/donaciones.jsp";
 	}
+	
+	@GetMapping("/adoptar")
+	public String adoptar(Model model) {
+		
+		model.addAttribute("pets", petService.mostrarMascota());
+		
+		return "/pet/adoptar.jsp";
+	}
+	
+	@GetMapping("/Perfil/{userId}")
+	public String perfil(@PathVariable("userId") Long userId,
+						 HttpSession session) {
+		
+		/*Revisa que mi usuario haya iniciado sesion*/
+		User userInMethod = (User)session.getAttribute("userInSession");
+		
+		if(userInMethod == null) { //para que no puedan entrar directamente con el url
+			return "redirect:/";
+		}
+		/*=======Revisa que mi usuario haya iniciado sesion=======*/
+		
+		return "";
+	}
+	
 }
