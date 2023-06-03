@@ -84,6 +84,8 @@ public class User {
 	@OneToMany(mappedBy="user", fetch = FetchType.LAZY)
     private List<Publication> publications;
 	
+	@OneToMany(mappedBy="owner", fetch = FetchType.LAZY)
+	private List<Pet> myPets;
 	
 	/////////////////////////////////
 	public User() {
@@ -218,5 +220,23 @@ public class User {
     protected void onUpdate(){
         this.updatedAt = new Date();
     }
+
+	public List<Publication> getPublications() {
+		return publications;
+	}
+
+	public void setPublications(List<Publication> publications) {
+		this.publications = publications;
+	}
+
+	public List<Pet> getMyPets() {
+		return myPets;
+	}
+
+	public void setMyPets(List<Pet> myPets) {
+		this.myPets = myPets;
+	}
+    
+    
 	
 }

@@ -20,10 +20,11 @@
                 <li><a href="/home">Inicio</a></li>
                 <li><a href="#">Perfil</a></li>
                 <li><a href="/adopcion">Dar en adopcion</a></li>
-                <li><a href="#">Adoptar</a></li>
+                <li><a href="/adoptar">Adoptar</a></li>
             </ul>            
         </nav>
         <a class="btn" href="/donaciones"><button>Donaciones</button></a>
+        <a class="btn" href="/logout"><button>Cerrar Sesión</button></a>
     </header>
 </body>
 </html>

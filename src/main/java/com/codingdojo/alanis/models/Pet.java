@@ -9,12 +9,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -45,9 +45,6 @@ public class Pet {
 	
 	@DateTimeFormat(pattern="yyyy-MM-dd")
 	private Date adoptionDate;
-	
-	@Size(min=2, max= 55) 
-	private String owner;
     
 	private String image; //como llamar a la imagen?
 	///////////////////////////////
@@ -74,6 +71,10 @@ public class Pet {
 	@OneToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="publication_id")
     private Publication publication;
+	 
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="user_id")
+	private User owner;
 	
 	//////////////////////////////
 	public Pet() {
@@ -121,14 +122,6 @@ public class Pet {
 
 	public void setAdoptionDate(Date adoptionDate) {
 		this.adoptionDate = adoptionDate;
-	}
-
-	public String getOwner() {
-		return owner;
-	}
-
-	public void setOwner(String owner) {
-		this.owner = owner;
 	}
 
 	public String getImage() {
@@ -205,6 +198,14 @@ public class Pet {
 
 	public void setPublication(Publication publication) {
 		this.publication = publication;
+	}
+
+	public User getOwner() {
+		return owner;
+	}
+
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 
