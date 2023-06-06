@@ -8,6 +8,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
 import com.codingdojo.alanis.models.Pet;
+import com.codingdojo.alanis.models.User;
 
 @Repository
 public interface PetRepository extends CrudRepository<Pet, Long>{
@@ -58,4 +59,7 @@ public interface PetRepository extends CrudRepository<Pet, Long>{
 	void deleteById(Long id);
 	
 	Pet save(Pet nuevoPet);
+	
+	@Query(value = "SELECT * FROM pets WHERE user_id = ?1", nativeQuery = true)
+    List<Pet> getOwnerPets(Long id);
 }

@@ -8,10 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-
-    <h1>Registro de adopción</h1>
+	<nav>
+		<jsp:include page="../includes/navbar.jsp"></jsp:include>
+	</nav>
+    <h1 class="text-center">Registro de adopción</h1>
     <div class="container">
-        <div class="row">
+        <div class="row d-flex justify-content-center">
             <div class="col-6">
                 <form action="/adopcion" method="POST" enctype="multipart/form-data">
 
@@ -64,12 +66,14 @@
 
                     <input type="hidden" name="owner" value="${userInSession.id}">
 
-                    <input type="submit" value="Actualizar" class="btn btn-success">
+                    <input type="submit" value="Dar en Adopción" class="btn btn-success mt-3">
                 </form>
 
             </div>
         </div>
     </div>
-    
+    <footer class="mt-5">
+    	<jsp:include page="../includes/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>

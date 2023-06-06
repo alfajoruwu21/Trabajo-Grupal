@@ -18,7 +18,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="/home">Inicio</a></li>
-                <li><a href="#">Perfil</a></li>
+                <li><a href="/perfil/${userInSession.id}">Perfil</a></li>
                 <li><a href="/adopcion">Dar en adopcion</a></li>
                 <li><a href="/adoptar">Adoptar</a></li>
             </ul>            

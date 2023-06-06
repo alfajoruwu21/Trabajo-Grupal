@@ -170,9 +170,9 @@ public class HomeController {
 		return "/pet/adoptar.jsp";
 	}
 	
-	@GetMapping("/Perfil/{userId}")
+	@GetMapping("/perfil/{userId}")
 	public String perfil(@PathVariable("userId") Long userId,
-						 HttpSession session) {
+						 HttpSession session, Model model) {
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
 		User userInMethod = (User)session.getAttribute("userInSession");
@@ -181,8 +181,9 @@ public class HomeController {
 			return "redirect:/";
 		}
 		/*=======Revisa que mi usuario haya iniciado sesion=======*/
-		
-		return "";
+		model.addAttribute("pets", petService.myPet(userInMethod.getId()));
+		System.out.println(petService.myPet(userInMethod.getId()));
+		return "/user/perfil.jsp";
 	}
 	
 	@GetMapping("/categoria/especies/{specie}")

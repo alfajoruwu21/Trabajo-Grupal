@@ -3,12 +3,11 @@ package com.codingdojo.alanis.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codingdojo.alanis.models.Pet;
+import com.codingdojo.alanis.models.User;
 import com.codingdojo.alanis.repositories.PetRepository;
 
 
@@ -97,6 +96,10 @@ public class PetService {
 		
 		public Pet guardarPet(Pet nuevoPet) {
 			return petRepo.save(nuevoPet);
+		}
+		
+		public List<Pet> myPet(Long id){
+			return petRepo.getOwnerPets(id);
 		}
 }
 
