@@ -30,6 +30,7 @@
 						<input type="submit" value="Borrar" class="btn btn-danger" >
 					</form>	
 					
+					
 					<a href="/editar/${pet.id}" class="btn btn-danger">Editar</a>
 	    		</div>
 	    	</div>

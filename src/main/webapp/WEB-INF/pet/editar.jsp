@@ -11,7 +11,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <form action="/adopcion" method="POST" enctype="multipart/form-data">
+                <form action="/editar/${pet.id}" method="POST" enctype="multipart/form-data">
 					<h1>Editar Mascota</h1>
 						<input type="hidden" name="_method" value="PUT">
 
@@ -64,7 +64,7 @@
 
                     <input type="hidden" name="owner" value="${userInSession.id}">
 
-                    <input type="submit" value="Adopción" class="btn btn-success">
+                    <input type="submit" value="editar" class="btn btn-success">
                 </form>
 
             </div>
