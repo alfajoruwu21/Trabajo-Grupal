@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ page isErrorPage="true" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,7 +13,7 @@
     <div class="container">
         <div class="row">
             <div class="col-6">
-                <form action="/editar/${pet.id}" method="POST" enctype="multipart/form-data">
+                <form action="/editar/${pet.id}" method="POST" enctype="multipart/form-data" modelAttribute="pet">
 					<h1>Editar Mascota</h1>
 						<input type="hidden" name="_method" value="PUT">
 

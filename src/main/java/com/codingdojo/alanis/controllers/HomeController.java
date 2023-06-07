@@ -172,20 +172,20 @@ public class HomeController {
 	
 	@GetMapping("/perfil/{userId}")
 	public String perfil(@PathVariable("userId") Long userId,
-						 HttpSession session, Model model) {
-		
-		/*Revisa que mi usuario haya iniciado sesion*/
-		User userInMethod = (User)session.getAttribute("userInSession");
-		
-		if(userInMethod == null) { //para que no puedan entrar directamente con el url
-			return "redirect:/";
-		}
-		/*=======Revisa que mi usuario haya iniciado sesion=======*/
-		model.addAttribute("pets", petService.myPet(userInMethod.getId()));
-		System.out.println(petService.myPet(userInMethod.getId()));
-		return "/user/perfil.jsp";
+	                     HttpSession session, Model model) {
+
+	    /*Revisa que mi usuario haya iniciado sesion*/
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { //para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /*=======Revisa que mi usuario haya iniciado sesion=======*/
+	    model.addAttribute("pets", petService.myPet(userId));
+	    System.out.println(petService.myPet(userId));
+	    return "/user/perfil.jsp";
 	}
-	
+
 	@GetMapping("/categoria/especies/{specie}")
 	public String mostrarMascotasPorSpecie(@PathVariable("specie") String specie, HttpSession session, Model model) {
 
@@ -267,33 +267,47 @@ public class HomeController {
 	}
 	//////////////////////editar/////////////////////////////////////////
 	
-	@GetMapping("/editar/{id}")
-	public String editPet(@PathVariable("id") Long id,
-						 Model model) {
+	/*@GetMapping("/editar/{id}")
+	public String editPet(@PathVariable("id") Long id, MultipartFile imagen,
+			 Model model, @ModelAttribute("pet") Pet pet) {
 		
-		model.addAttribute("generos", Genre.generos);
-		model.addAttribute("especies", Species.especies);
-		model.addAttribute("edades", Age.edades);
+		/*if(!imagen.isEmpty()) {
+		   Path directorioImagenes = Paths.get("src/main/resources/static/img");
+		   String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
 		
-		Pet editPet = petService.findPet(id);
-		model.addAttribute("pet", editPet);
-		return "/pet/editar.jsp";
-	}
-	
+		   try {
+		
+		       byte[] bytesImg = imagen.getBytes();
+		       Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
+		       Files.write(rutaCompleta, bytesImg);//guarda la imagen en la ruta
+		
+		       pet.setImage(imagen.getOriginalFilename());
+		       System.out.println(imagen.getOriginalFilename());
+		   }catch(IOException e) {
+		       e.printStackTrace();
+		   }
+		}
+		
+		petService.guardarMascotas(pet);
+				return "/pet/editar.jsp";
+			}
+			
 	@PutMapping("/editar/{id}")
 	public String updatePet(@Valid
-							@ModelAttribute("pet") Pet pet,
+							@ModelAttribute("pet") Pet pet, MultipartFile imagen,
 							BindingResult result, Model model ) {
 		
 		if(result.hasErrors()) {
+			System.out.println("hola");
 			model.addAttribute("generos", Genre.generos);
 			model.addAttribute("especies", Species.especies);
 			model.addAttribute("edades", Age.edades);
-			return "/pet/editar.jsp";
-		}else {
+			return "pet/adopcion.jsp";
+			
+			}else {
 			petService.guardarPet(pet);
 			return "redirect:/home";
 		}
 		
-	}
+	}*/
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +16,7 @@
     <div class="container">
         <div class="row d-flex justify-content-center">
             <div class="col-6">
-                <form action="/adopcion" method="POST" enctype="multipart/form-data">
+                <form action="/adopcion" method="POST" enctype="multipart/form-data" >
 
                     <div class="form-group">
                         <label for="name">Nombre de la mascota</label>
