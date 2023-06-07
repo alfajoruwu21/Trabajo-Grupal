@@ -8,7 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="/css/navbar.css">
 </head>
 <body>
     <header class="header">
@@ -18,7 +18,7 @@
         <nav>
             <ul class="nav-links">
                 <li><a href="/home">Inicio</a></li>
-                <li><a href="#">Perfil</a></li>
+                <li><a href="/perfil/${userInSession.id}">Perfil</a></li>
                 <li><a href="/adopcion">Dar en adopcion</a></li>
                 <li><a href="/adoptar">Adoptar</a></li>
             </ul>            

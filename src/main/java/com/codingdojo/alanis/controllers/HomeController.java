@@ -103,7 +103,7 @@ public class HomeController {
 			model.addAttribute("generos", Genre.generos);
 			model.addAttribute("especies", Species.especies);
 			model.addAttribute("edades", Age.edades);
-			return "pet/adopcion.jsp";
+			return "/pet/adopcion.jsp";
 			
 		}else {
 			if(!imagen.isEmpty()) {

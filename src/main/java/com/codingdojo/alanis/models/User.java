@@ -87,6 +87,14 @@ public class User {
 	@OneToMany(mappedBy="owner", fetch = FetchType.LAZY)
 	private List<Pet> myPets;
 	
+	
+	////Relación de mensajes
+	@OneToMany(mappedBy="remitter", fetch = FetchType.LAZY)
+	List<Message> messageSent;
+	
+	@OneToMany(mappedBy="receptor", fetch = FetchType.LAZY)
+	List<Message> messageReceived;
+	
 	/////////////////////////////////
 	public User() {
 	}

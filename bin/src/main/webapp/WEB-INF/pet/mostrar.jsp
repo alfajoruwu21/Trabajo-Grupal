@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -8,7 +8,7 @@
 <title>Mascota</title>
 <link rel="shortcut icon" href="img/icons/LogoPng.png" type="img_logo">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<link rel="stylesheet" href="css/style.css">
+ <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 	<nav>
@@ -27,7 +27,7 @@
 			<p>Ciudad : ${mostrarPet.city}</p>
 			<p>Propietario : ${mostrarPet.owner.name}</p>
 			<p>Vacunas : ${mostrarPet.vaccine}</p>
-			<p>GÃ©nero : ${mostrarPet.genre}</p>
+			<p>Género : ${mostrarPet.genre}</p>
 			<p>Especie : ${mostrarPet.species}</p>
 		</div>
 		
@@ -37,5 +37,8 @@
         </c:if>
 		
 	</div>
+	<footer class="mt-5">
+    	<jsp:include page="../includes/footer.jsp"></jsp:include>
+    </footer>
 </body>
 </html>
