@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.codingdojo.alanis.models.Age;
@@ -267,6 +268,66 @@ public class HomeController {
 	}
 	//////////////////////editar/////////////////////////////////////////
 	
+	@GetMapping("/editar/{id}")
+	public String showEditForm(@PathVariable("id") Long id, Model model, HttpSession session) {
+		
+	    User userInSession = (User) session.getAttribute("userInSession");
+	    if (userInSession == null) {
+	        return "redirect:/";
+	    }
+	    Pet pet = petService.findPet(id);
+	    if (pet == null) {
+	        return "redirect:/home";
+	    }
+	    model.addAttribute("pet", pet);
+	    model.addAttribute("generos", Genre.generos);
+	    model.addAttribute("especies", Species.especies);
+	    model.addAttribute("edades", Age.edades);
+	    return "pet/editar.jsp";
+	}
+
+	@PutMapping("/editar/{id}")
+	public String updatePet(@PathVariable("id") Long id, @Valid @ModelAttribute("pet") Pet pet, BindingResult result,
+	                        @RequestParam("imagen") MultipartFile imagen, HttpSession session, Model model) {
+	    User userInSession = (User) session.getAttribute("userInSession");
+	    if (userInSession == null) {
+	        return "redirect:/";
+	    }
+	    Pet existingPet = petService.findPet(id);
+	    if (existingPet == null) {
+	        return "redirect:/home";
+	    }
+	    if (result.hasErrors()) {
+	        model.addAttribute("generos", Genre.generos);
+	        model.addAttribute("especies", Species.especies);
+	        model.addAttribute("edades", Age.edades);
+	        return "pet/editar.jsp";
+	    } else {
+	        if (!imagen.isEmpty()) {
+	            Path directorioImagenes = Paths.get("src/main/resources/static/img");
+	            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+
+	            try {
+	                byte[] bytesImg = imagen.getBytes();
+	                Path rutaCompleta = Paths.get(rutaAbsoluta + "/" + imagen.getOriginalFilename());
+	                Files.write(rutaCompleta, bytesImg);
+	                pet.setImage(imagen.getOriginalFilename());
+	                System.out.println(imagen.getOriginalFilename());
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        
+	        existingPet.setName(pet.getName());
+	        existingPet.setGenre(pet.getGenre());
+	        existingPet.setSpecies(pet.getSpecies());
+	        existingPet.setAge(pet.getAge());
+	        petService.guardarPet(existingPet);
+	        return "redirect:/home";
+	    }
+	}
+
+
 	/*@GetMapping("/editar/{id}")
 	public String editPet(@PathVariable("id") Long id, MultipartFile imagen,
 			 Model model, @ModelAttribute("pet") Pet pet) {
