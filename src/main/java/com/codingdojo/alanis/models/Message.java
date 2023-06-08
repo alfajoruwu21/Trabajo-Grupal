@@ -26,7 +26,7 @@ public class Message {
 	private Long id;
 
 	@Size(min=1)
-	private String message;
+	private String text;
 	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="remitter_id")
@@ -46,13 +46,31 @@ public class Message {
 	public Message() {
 	}
 
-	public String getMessage() {
-		return message;
+	
+
+	public Long getId() {
+		return id;
 	}
 
-	public void setMessage(String message) {
-		this.message = message;
+
+
+	public void setId(Long id) {
+		this.id = id;
 	}
+
+
+
+	public String getText() {
+		return text;
+	}
+
+
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+
 
 	public User getRemitter() {
 		return remitter;

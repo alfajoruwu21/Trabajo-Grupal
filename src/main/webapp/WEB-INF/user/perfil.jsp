@@ -17,7 +17,7 @@
   <nav>
     <jsp:include page="../includes/navbar.jsp"></jsp:include>
   </nav>
-  <h1>¡Bienvenido a tu perfil ${userInSession.name}!</h1>
+  <h1>¡Bienvenido a tu perfil ${user.name}!</h1>
 
   <div class="row">
     <h2>Mis mascotas creadas:</h2>

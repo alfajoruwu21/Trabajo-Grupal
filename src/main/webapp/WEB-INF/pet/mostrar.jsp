@@ -25,7 +25,7 @@
 			<p>${mostrarPet.description}</p>
 			<p>Edad : ${mostrarPet.age}</p>
 			<p>Ciudad : ${mostrarPet.city}</p>
-			<p>Propietario : ${mostrarPet.owner.name}</p>
+			<p>Propietario : <a href="/perfil/${mostrarPet.owner.id}">${mostrarPet.owner.name}</a></p>
 			<p>Vacunas : ${mostrarPet.vaccine}</p>
 			<p>Género : ${mostrarPet.genre}</p>
 			<p>Especie : ${mostrarPet.species}</p>

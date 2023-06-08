@@ -17,8 +17,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import com.codingdojo.alanis.models.Age;
@@ -27,6 +29,7 @@ import com.codingdojo.alanis.models.Pet;
 import com.codingdojo.alanis.models.Species;
 import com.codingdojo.alanis.models.User;
 import com.codingdojo.alanis.services.PetService;
+import com.codingdojo.alanis.services.UserService;
 
 
 @Controller
@@ -34,6 +37,9 @@ public class HomeController {
 
 	@Autowired
 	private PetService petService;
+	
+	@Autowired
+	private UserService userService;
 	
 	@GetMapping("/")
 	public String index() {
@@ -183,7 +189,10 @@ public class HomeController {
 	    }
 	    /*=======Revisa que mi usuario haya iniciado sesion=======*/
 	    model.addAttribute("pets", petService.myPet(userId));
-	    System.out.println(petService.myPet(userId));
+	    //System.out.println(petService.myPet(userId));
+	    
+	    model.addAttribute("user", userService.buscarId(userId));
+	    
 	    return "/user/perfil.jsp";
 	}
 
