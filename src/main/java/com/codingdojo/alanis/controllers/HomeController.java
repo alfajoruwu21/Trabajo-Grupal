@@ -17,10 +17,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.multipart.MultipartFile;
 
 import com.codingdojo.alanis.models.Age;
@@ -28,6 +26,7 @@ import com.codingdojo.alanis.models.Genre;
 import com.codingdojo.alanis.models.Pet;
 import com.codingdojo.alanis.models.Species;
 import com.codingdojo.alanis.models.User;
+import com.codingdojo.alanis.models.Vaccine;
 import com.codingdojo.alanis.services.PetService;
 import com.codingdojo.alanis.services.UserService;
 
@@ -73,6 +72,7 @@ public class HomeController {
 		model.addAttribute("generos", Genre.generos);
 		model.addAttribute("especies", Species.especies);
 		model.addAttribute("edades", Age.edades);
+		model.addAttribute("vacunas", Vaccine.vacunas);
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
 		User userInMethod = (User)session.getAttribute("userInSession");
@@ -95,6 +95,7 @@ public class HomeController {
 		model.addAttribute("generos", Genre.generos);
 		model.addAttribute("especies", Species.especies);
 		model.addAttribute("edades", Age.edades);
+		model.addAttribute("vacunas", Vaccine.vacunas);
 		
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
@@ -110,6 +111,7 @@ public class HomeController {
 			model.addAttribute("generos", Genre.generos);
 			model.addAttribute("especies", Species.especies);
 			model.addAttribute("edades", Age.edades);
+			model.addAttribute("vacunas", Vaccine.vacunas);
 			return "/pet/adopcion.jsp";
 			
 		}else {
@@ -296,6 +298,7 @@ public class HomeController {
 	    model.addAttribute("generos", Genre.generos);
 	    model.addAttribute("especies", Species.especies);
 	    model.addAttribute("edades", Age.edades);
+	    model.addAttribute("vacunas", Vaccine.vacunas);
 	    return "pet/editar.jsp";
 	}
 
@@ -314,6 +317,7 @@ public class HomeController {
 	        model.addAttribute("generos", Genre.generos);
 	        model.addAttribute("especies", Species.especies);
 	        model.addAttribute("edades", Age.edades);
+	        model.addAttribute("vacunas", Vaccine.vacunas);
 	        return "pet/editar.jsp";
 	    } else {
 	        if (!imagen.isEmpty()) {
