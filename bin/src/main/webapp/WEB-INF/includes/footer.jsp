@@ -17,7 +17,7 @@
             <div class="box">
                 <figure>
                     <a href="#">
-                        <img src="images/LogoPngBorde.png" alt="Logo">
+                        <img src="/images/LogoPngBorde.png" alt="Logo">
                     </a>
                 </figure>
             </div>

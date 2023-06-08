@@ -13,7 +13,7 @@
 <body>
     <header class="header">
         <div class="logo">
-        	<a href="/home"><img src="images/LogoPngBorde.png" alt="Logo de la marca"></a>
+        	<a href="/home"><img src="/images/LogoPngBorde.png" alt="Logo de la marca"></a>
         </div>
         <nav>
             <ul class="nav-links">
