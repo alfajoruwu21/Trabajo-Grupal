@@ -14,7 +14,7 @@
       rel="stylesheet"
       integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
       crossorigin="anonymous">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
   </head>
 
   <body>
@@ -46,8 +46,10 @@
                           data-bs-parent="#accordionExample">
                           <div class="accordion-body">
                             <nav class="nav nav-pills flex-column">
-                              <a class="nav-link ms-3 my-1" href="#item-1-1">Perro</a>
-                              <a class="nav-link ms-3 my-1" href="#item-1-2">Gato</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/perros">Perros</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/gatos">Gatos</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/roedores">Roedores</a>
+                              <a class="nav-link ms-3 my-1" href="categoria/especies/otros">Otras especies</a>
                             </nav>
                           </div>
                         </div>
@@ -66,8 +68,8 @@
                           aria-labelledby="headingTwo"
                           data-bs-parent="#accordionExample">
                           <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ms-3 my-1" href="#item-1-1">Hembra</a>
-                            <a class="nav-link ms-3 my-1" href="#item-1-2">Macho</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/generos/hembras">Hembra</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/generos/machos">Macho</a>
                           </nav>
                         </div>
                       </div>
@@ -85,9 +87,9 @@
                           aria-labelledby="headingThree"
                           data-bs-parent="#accordionExample">
                           <nav class="nav nav-pills flex-column">
-                            <a class="nav-link ms-3 my-1" href="#item-1-1">Cachorro</a>
-                            <a class="nav-link ms-3 my-1" href="#item-1-2">Adulto</a>
-                            <a class="nav-link ms-3 my-1" href="#item-1-3">Senior</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/edades/cachorros">Cachorro</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/edades/adultos">Adulto</a>
+                            <a class="nav-link ms-3 my-1" href="categoria/edades/seniors">Senior</a>
                           </nav>
                         </div>
                       </div>

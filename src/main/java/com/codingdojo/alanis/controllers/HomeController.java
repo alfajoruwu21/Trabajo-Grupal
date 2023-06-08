@@ -12,13 +12,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.codingdojo.alanis.models.Age;
+import com.codingdojo.alanis.models.Genre;
 import com.codingdojo.alanis.models.Pet;
+import com.codingdojo.alanis.models.Species;
 import com.codingdojo.alanis.models.User;
 import com.codingdojo.alanis.services.PetService;
 
@@ -47,7 +53,6 @@ public class HomeController {
 		}
 		/*=======Revisa que mi usuario haya iniciado sesion=======*/
 		
-		
 		model.addAttribute("pets", petService.carrusel());
 		
 		System.out.println(petService.carrusel());
@@ -57,10 +62,15 @@ public class HomeController {
 	
 	@GetMapping("/adopcion")
 	public String adopcion(@ModelAttribute("pet") Pet pet,
-						   HttpSession session) {
+						   HttpSession session, Model model) {
+		
+		model.addAttribute("generos", Genre.generos);
+		model.addAttribute("especies", Species.especies);
+		model.addAttribute("edades", Age.edades);
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
 		User userInMethod = (User)session.getAttribute("userInSession");
+		
 		
 		if(userInMethod == null) { //para que no puedan entrar directamente con el url
 			return "redirect:/";
@@ -74,7 +84,12 @@ public class HomeController {
 	public String adopcion(@Valid @ModelAttribute("pet") Pet pet, 
 						   BindingResult result,
 						   MultipartFile imagen,
-						   HttpSession session) {
+						   HttpSession session, Model model) {
+		
+		model.addAttribute("generos", Genre.generos);
+		model.addAttribute("especies", Species.especies);
+		model.addAttribute("edades", Age.edades);
+		
 		
 		/*Revisa que mi usuario haya iniciado sesion*/
 		User userInMethod = (User)session.getAttribute("userInSession");
@@ -86,7 +101,10 @@ public class HomeController {
 		
 		if(result.hasErrors()) {
 			System.out.println("hola");
-			return "pet/adopcion.jsp";
+			model.addAttribute("generos", Genre.generos);
+			model.addAttribute("especies", Species.especies);
+			model.addAttribute("edades", Age.edades);
+			return "/pet/adopcion.jsp";
 			
 		}else {
 			if(!imagen.isEmpty()) {
@@ -153,19 +171,204 @@ public class HomeController {
 		return "/pet/adoptar.jsp";
 	}
 	
-	@GetMapping("/Perfil/{userId}")
+	@GetMapping("/perfil/{userId}")
 	public String perfil(@PathVariable("userId") Long userId,
-						 HttpSession session) {
-		
-		/*Revisa que mi usuario haya iniciado sesion*/
-		User userInMethod = (User)session.getAttribute("userInSession");
-		
-		if(userInMethod == null) { //para que no puedan entrar directamente con el url
-			return "redirect:/";
-		}
-		/*=======Revisa que mi usuario haya iniciado sesion=======*/
-		
-		return "";
+	                     HttpSession session, Model model) {
+
+	    /*Revisa que mi usuario haya iniciado sesion*/
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { //para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /*=======Revisa que mi usuario haya iniciado sesion=======*/
+	    model.addAttribute("pets", petService.myPet(userId));
+	    System.out.println(petService.myPet(userId));
+	    return "/user/perfil.jsp";
+	}
+
+	@GetMapping("/categoria/especies/{specie}")
+	public String mostrarMascotasPorSpecie(@PathVariable("specie") String specie, HttpSession session, Model model) {
+
+	    /* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
+	    
+	    if (specie.equalsIgnoreCase("perros")) {
+	        model.addAttribute("mascotas", petService.getPerros());
+	    } else if (specie.equalsIgnoreCase("gatos")) {
+	        model.addAttribute("mascotas", petService.getGatos());
+	    } else if (specie.equalsIgnoreCase("roedores")) {
+	        model.addAttribute("mascotas", petService.getRoedores());
+	    } else {
+	        model.addAttribute("mascotas", petService.getOtros());
+	    }
+
+	    
+	    model.addAttribute("especie", specie);
+	    return "/categoria/species.jsp";
+	}
+
+	@GetMapping("/categoria/generos/{genre}")
+	public String mostrarMascotasPorGenero(@PathVariable("genre") String genre, HttpSession session, Model model) {
+
+	    /* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
+	    
+	    if (genre.equalsIgnoreCase("machos")) {
+	        model.addAttribute("mascotas", petService.getMachos());
+	    } else if (genre.equalsIgnoreCase("hembras")) {
+	        model.addAttribute("mascotas", petService.getHembras());
+	    } 
+	    
+	    model.addAttribute("genero", genre);
+	    return "/categoria/genre.jsp";
 	}
 	
+	@GetMapping("/categoria/edades/{age}")
+	public String mostrarMascotasPorEdad(@PathVariable("age") String age, HttpSession session, Model model) {
+
+	    /* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
+	        return "redirect:/";
+	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
+	    if (age.equalsIgnoreCase("cachorros")) {
+	        model.addAttribute("mascotas", petService.getCachorros());
+	    } else if (age.equalsIgnoreCase("adultos")) {
+	        model.addAttribute("mascotas", petService.getAdultos());
+	    } else if (age.equalsIgnoreCase("seniors")) {
+	        model.addAttribute("mascotas", petService.getSeniors());
+	    } 
+	    
+	    model.addAttribute("edad", age);
+	    return "/categoria/age.jsp";
+	}
+	
+	/////////////////////eliminar////////////////////////////////////
+
+	@DeleteMapping("/borrar/{id}")
+	public String borrarPet(@PathVariable("id") Long id) {
+		petService.deletePet(id);
+		return "redirect:/adoptar";
+	}
+	//////////////////////editar/////////////////////////////////////////
+	
+	@GetMapping("/editar/{id}")
+	public String showEditForm(@PathVariable("id") Long id, Model model, HttpSession session) {
+		
+	    User userInSession = (User) session.getAttribute("userInSession");
+	    if (userInSession == null) {
+	        return "redirect:/";
+	    }
+	    Pet pet = petService.findPet(id);
+	    if (pet == null) {
+	        return "redirect:/home";
+	    }
+	    model.addAttribute("pet", pet);
+	    model.addAttribute("generos", Genre.generos);
+	    model.addAttribute("especies", Species.especies);
+	    model.addAttribute("edades", Age.edades);
+	    return "pet/editar.jsp";
+	}
+
+	@PutMapping("/editar/{id}")
+	public String updatePet(@PathVariable("id") Long id, @Valid @ModelAttribute("pet") Pet pet, BindingResult result,
+	                        @RequestParam("imagen") MultipartFile imagen, HttpSession session, Model model) {
+	    User userInSession = (User) session.getAttribute("userInSession");
+	    if (userInSession == null) {
+	        return "redirect:/";
+	    }
+	    Pet existingPet = petService.findPet(id);
+	    if (existingPet == null) {
+	        return "redirect:/home";
+	    }
+	    if (result.hasErrors()) {
+	        model.addAttribute("generos", Genre.generos);
+	        model.addAttribute("especies", Species.especies);
+	        model.addAttribute("edades", Age.edades);
+	        return "pet/editar.jsp";
+	    } else {
+	        if (!imagen.isEmpty()) {
+	            Path directorioImagenes = Paths.get("src/main/resources/static/img");
+	            String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+
+	            try {
+	                byte[] bytesImg = imagen.getBytes();
+	                Path rutaCompleta = Paths.get(rutaAbsoluta + "/" + imagen.getOriginalFilename());
+	                Files.write(rutaCompleta, bytesImg);
+	                pet.setImage(imagen.getOriginalFilename());
+	                System.out.println(imagen.getOriginalFilename());
+	            } catch (IOException e) {
+	                e.printStackTrace();
+	            }
+	        }
+	        
+	        existingPet.setName(pet.getName());
+	        existingPet.setGenre(pet.getGenre());
+	        existingPet.setSpecies(pet.getSpecies());
+	        existingPet.setAge(pet.getAge());
+	        petService.guardarPet(existingPet);
+	        return "redirect:/home";
+	    }
+	}
+
+
+	/*@GetMapping("/editar/{id}")
+	public String editPet(@PathVariable("id") Long id, MultipartFile imagen,
+			 Model model, @ModelAttribute("pet") Pet pet) {
+		
+		/*if(!imagen.isEmpty()) {
+		   Path directorioImagenes = Paths.get("src/main/resources/static/img");
+		   String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
+		
+		   try {
+		
+		       byte[] bytesImg = imagen.getBytes();
+		       Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
+		       Files.write(rutaCompleta, bytesImg);//guarda la imagen en la ruta
+		
+		       pet.setImage(imagen.getOriginalFilename());
+		       System.out.println(imagen.getOriginalFilename());
+		   }catch(IOException e) {
+		       e.printStackTrace();
+		   }
+		}
+		
+		petService.guardarMascotas(pet);
+				return "/pet/editar.jsp";
+			}
+			
+	@PutMapping("/editar/{id}")
+	public String updatePet(@Valid
+							@ModelAttribute("pet") Pet pet, MultipartFile imagen,
+							BindingResult result, Model model ) {
+		
+		if(result.hasErrors()) {
+			System.out.println("hola");
+			model.addAttribute("generos", Genre.generos);
+			model.addAttribute("especies", Species.especies);
+			model.addAttribute("edades", Age.edades);
+			return "pet/adopcion.jsp";
+			
+			}else {
+			petService.guardarPet(pet);
+			return "redirect:/home";
+		}
+		
+	}*/
 }
