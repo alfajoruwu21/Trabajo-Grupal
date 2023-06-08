@@ -270,8 +270,8 @@ public class HomeController {
 	
 	/////////////////////eliminar////////////////////////////////////
 
-	@DeleteMapping("/borrar/{id}")
-	public String borrarPet(@PathVariable("id") Long id) {
+	@DeleteMapping("/borrar/{petId}")
+	public String borrarPet(@PathVariable("petId") Long id) {
 		petService.deletePet(id);
 		return "redirect:/adoptar";
 	}
@@ -280,10 +280,14 @@ public class HomeController {
 	@GetMapping("/editar/{id}")
 	public String showEditForm(@PathVariable("id") Long id, Model model, HttpSession session) {
 		
-	    User userInSession = (User) session.getAttribute("userInSession");
-	    if (userInSession == null) {
+		/* Revisa que mi usuario haya iniciado sesion */
+	    User userInMethod = (User) session.getAttribute("userInSession");
+
+	    if (userInMethod == null) { // para que no puedan entrar directamente con el url
 	        return "redirect:/";
 	    }
+	    /* ======= Revisa que mi usuario haya iniciado sesion ======= */
+	    
 	    Pet pet = petService.findPet(id);
 	    if (pet == null) {
 	        return "redirect:/home";
@@ -332,52 +336,9 @@ public class HomeController {
 	        existingPet.setSpecies(pet.getSpecies());
 	        existingPet.setAge(pet.getAge());
 	        petService.guardarPet(existingPet);
+	        
 	        return "redirect:/home";
 	    }
 	}
 
-
-	/*@GetMapping("/editar/{id}")
-	public String editPet(@PathVariable("id") Long id, MultipartFile imagen,
-			 Model model, @ModelAttribute("pet") Pet pet) {
-		
-		/*if(!imagen.isEmpty()) {
-		   Path directorioImagenes = Paths.get("src/main/resources/static/img");
-		   String rutaAbsoluta = directorioImagenes.toFile().getAbsolutePath();
-		
-		   try {
-		
-		       byte[] bytesImg = imagen.getBytes();
-		       Path rutaCompleta = Paths.get(rutaAbsoluta+"/"+imagen.getOriginalFilename());
-		       Files.write(rutaCompleta, bytesImg);//guarda la imagen en la ruta
-		
-		       pet.setImage(imagen.getOriginalFilename());
-		       System.out.println(imagen.getOriginalFilename());
-		   }catch(IOException e) {
-		       e.printStackTrace();
-		   }
-		}
-		
-		petService.guardarMascotas(pet);
-				return "/pet/editar.jsp";
-			}
-			
-	@PutMapping("/editar/{id}")
-	public String updatePet(@Valid
-							@ModelAttribute("pet") Pet pet, MultipartFile imagen,
-							BindingResult result, Model model ) {
-		
-		if(result.hasErrors()) {
-			System.out.println("hola");
-			model.addAttribute("generos", Genre.generos);
-			model.addAttribute("especies", Species.especies);
-			model.addAttribute("edades", Age.edades);
-			return "pet/adopcion.jsp";
-			
-			}else {
-			petService.guardarPet(pet);
-			return "redirect:/home";
-		}
-		
-	}*/
 }
