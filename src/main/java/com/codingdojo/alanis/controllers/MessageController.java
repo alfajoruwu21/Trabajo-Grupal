@@ -39,7 +39,7 @@ public class MessageController {
 		model.addAttribute("recibe", userId);
 		
 		model.addAttribute("chat", messaService.conversacion(userInMethod.getId(), userId));
-		
+		System.out.println(messaService.conversacion(userInMethod.getId(), userId));
 		return "/message/mensajes.jsp";
 	}
 	

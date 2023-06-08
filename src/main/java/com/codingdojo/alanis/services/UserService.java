@@ -54,4 +54,8 @@ public class UserService {
 		}
 		
 	}
+	
+	public User buscarId(Long id) {
+		return userRepo.findById(id).orElse(null);
+	}
 }
