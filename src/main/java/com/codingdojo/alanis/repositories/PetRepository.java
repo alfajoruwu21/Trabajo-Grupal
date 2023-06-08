@@ -23,6 +23,8 @@ public interface PetRepository extends CrudRepository<Pet, Long>{
 	@Query(value="SELECT * FROM pets LIMIT 8;" , nativeQuery = true)
 	List<Pet> carrusel();
 	
+	//select pets.id from pets 
+	
 	
 	@Query(value = "SELECT * FROM pets WHERE species = 'perro'", nativeQuery = true)
     List<Pet> getPerros();
