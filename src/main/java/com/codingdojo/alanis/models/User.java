@@ -49,7 +49,6 @@ public class User {
 	private String password;
 	
 	@Transient //No guarda el dato DB
-	@NotEmpty
 	@Size(min=6)
 	private String confirm;
 	

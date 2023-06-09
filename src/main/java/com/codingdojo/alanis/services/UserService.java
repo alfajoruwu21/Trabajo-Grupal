@@ -58,4 +58,8 @@ public class UserService {
 	public User buscarId(Long id) {
 		return userRepo.findById(id).orElse(null);
 	}
+	
+	public User saveUser(User newUser) {
+		return userRepo.save(newUser);
+	}
 }

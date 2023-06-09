@@ -33,7 +33,7 @@
 			<h4>${user.address}</h4>
 		</c:if>
 		<c:if test="${userInSession.id == user.id}">
-			<h1><a href="/editarPerfil">Editar Perfil</a></h1>
+			<h1><a href="/editarPerfil/${user.id}">Editar Perfil</a></h1>
 		</c:if>
 		<c:if test="${userInSession.id != user.id}">
 		<h1><a href="/mensaje/${user.id}">Enviar mensaje</a></h1>
