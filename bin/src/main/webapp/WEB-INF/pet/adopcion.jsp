@@ -56,6 +56,15 @@
                     </div>
                     
                     <div class="form-group">
+                        <label for="vaccine">Vacunas</label>
+                        <select name="vaccine" class="form-control">
+                            <c:forEach items="${vacunas}" var="vac">
+                                <option value="${vac}" <c:if test="${vac eq mascota.vaccine}">selected</c:if>>${vac}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
                         <label for="imagen">Imagen</label>
                         <input type="file" name="imagen" class="form-control" id="imagen" placeholder="imagen de 50x50 px">
                     </div>

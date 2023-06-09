@@ -8,69 +8,79 @@
     <meta charset="UTF-8">
     <title>Editar Mascota</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
 </head>
 <body>
     <div class="container">
-            <div class="col-md-6">
-			    <form:form action="/editar/${pet.id}" method="POST" enctype="multipart/form-data" modelAttribute="pet">
-			        <h1 class="text-center">Editar Mascota</h1>
-			        <input type="hidden" name="_method" value="PUT">
-			
-			        <div class="form-group">
-			            <form:label path="name">Nombre de la mascota</form:label>
-			            <form:input path="name" class="form-control" />
-			        </div>
-			
-			        <div class="form-group">
-			            <form:label path="age">Edad</form:label>
-			            <form:select path="age" class="form-control">
-			                <c:forEach items="${edades}" var="a">
-			                    <form:option value="${a}">${a}</form:option>
-			                </c:forEach>
-			            </form:select>
-			        </div>
-			
-			        <div class="form-group">
-			            <form:label path="city">Ciudad</form:label>
-			            <form:input path="city" class="form-control" />
-			        </div>
-			
-			        <div class="form-group">
-			            <form:label path="genre">Género</form:label>
-			            <form:select path="genre" class="form-control">
-			                <c:forEach items="${generos}" var="g">
-			                    <form:option value="${g}">${g}</form:option>
-			                </c:forEach>
-			            </form:select>
-			        </div>
-			
-			        <div class="form-group">
-			            <form:label path="species">Especie</form:label>
-			            <form:select path="species" class="form-control">
-			                <c:forEach items="${especies}" var="es">
-			                    <form:option value="${es}">${es}</form:option>
-			                </c:forEach>
-			            </form:select>
-			        </div>
-			
-			        <div class="form-group">
-			            <form:label path="imagen">Imagen</form:label>
-			            <form:input type="file" path="imagen" class="form-control" placeholder="imagen de 50x50 px" />
-			        </div>
-			
-			        <div class="form-group">
-			            <form:label path="description">Descripción</form:label>
-			            <form:textarea path="description" class="form-control" />
-			        </div>
-			
-			        <input type="hidden" name="owner" value="${userInSession.id}" />
-			
-			        <input type="submit" value="Editar" class="btn btn-success">
-			    </form:form>
+        <div class="row">
+            <div class="col-6">
+                <form action="/editar/${pet.id}" method="POST" enctype="multipart/form-data" modelAttribute="pet">
+					<h1>Editar Mascota</h1>
+						<input type="hidden" name="_method" value="PUT">
+
+                    <div class="form-group">
+                        <label for="name">Nombre de la mascota</label>
+                        <input type="text" name="name" class="form-control" id="name">
+                    </div>
+
+                      <div class="form-group">
+                        <label for="age">Edad</label>
+                        <select name="age" class="form-control">
+                            <c:forEach items="${edades}" var="a">
+                                <option value="${a}">${a}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="city">Ciudad</label>
+                        <input type="text" name="city" class="form-control" id="city">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="genre">Género</label>
+                        <select name="genre" class="form-control">
+                            <c:forEach items="${generos}" var="g">
+                                <option value="${g}">${g}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="species">Especie</label>
+                        <select name="species" class="form-control">
+                            <c:forEach items="${especies}" var="es">
+                                <option value="${es}">${es}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="vaccine">Vacunas</label>
+                        <select name="vaccine" class="form-control">
+                            <c:forEach items="${vacunas}" var="vac">
+                                <option value="${vac}" <c:if test="${vac eq mascota.vaccine}">selected</c:if>>${vac}</option>
+                            </c:forEach>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="imagen">Imagen</label>
+                        <input type="file" name="imagen" class="form-control" id="imagen" placeholder="imagen de 50x50 px">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">Descripción</label>
+                        <textarea name="description" class="form-control" id="description"></textarea>
+                    </div>
+
+                    <input type="hidden" name="owner" value="${userInSession.id}">
+
+                    <input type="submit" value="editar" class="btn btn-success">
+                </form>
 
             </div>
         </div>
     </div>
+    
 </body>
 </html>

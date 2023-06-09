@@ -25,7 +25,7 @@
 			<p>${mostrarPet.description}</p>
 			<p>Edad : ${mostrarPet.age}</p>
 			<p>Ciudad : ${mostrarPet.city}</p>
-			<p>Propietario : ${mostrarPet.owner.name}</p>
+			<p>Propietario : <a href="/perfil/${mostrarPet.owner.id}">${mostrarPet.owner.name}</a></p>
 			<p>Vacunas : ${mostrarPet.vaccine}</p>
 			<p>Género : ${mostrarPet.genre}</p>
 			<p>Especie : ${mostrarPet.species}</p>
@@ -34,8 +34,12 @@
 		
 		<c:if test="${userInSession.id eq mostrarPet.owner.id}">
             <a href="/editar/${mostrarPet.id}" class="btn btn-primary">Editar</a>
+            <a href="/borrar/${mostrarPet.id}" class="btn btn-danger">Borrar</a>
+            <a href="/borrar/${mostrarPet.id}" class="btn btn-secondary">Adoptado</a>
         </c:if>
-		
+        <c:if test="${userInSession.id != mostrarPet.owner.id}">
+            <a href="/adoptar/${mostrarPet.id}" class="btn btn-primary">Adoptar</a>
+        </c:if>
 	</div>
 	<footer class="mt-5">
     	<jsp:include page="../includes/footer.jsp"></jsp:include>

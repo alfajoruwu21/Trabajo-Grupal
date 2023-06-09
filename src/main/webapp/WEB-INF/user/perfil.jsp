@@ -58,7 +58,7 @@
 						<p class="card-text">Ciudad: ${pet.city}</p>
 						<a href="/mostrar/${pet.id}" class="btn btn-primary">Más info</a>
 						<c:if test="${userInSession.id == pet.owner.id}">
-							<a href="/editar/${mostrarPet.id}" class="btn btn-success">Editar</a>
+							<a href="/editar/${pet.id}" class="btn btn-success">Editar</a>
 						</c:if>
 				  </div>
 				</div>
